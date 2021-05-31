@@ -192,14 +192,14 @@ export default class Undo {
   setEventListeners() {
     const buttonKey = /(Mac)/i.test(navigator.platform) ? 'metaKey' : 'ctrlKey';
     const handleUndo = (e) => {
-      if (e[buttonKey] && e.key === 'z') {
+      if (e[buttonKey] && e.key === 'z' && !e.shiftKey) {
         e.preventDefault();
         this.undo();
       }
     };
 
     const handleRedo = (e) => {
-      if (e[buttonKey] && e.key === 'y') {
+      if (e[buttonKey] && e.key === 'z' && e.shiftKey) {
         e.preventDefault();
         this.redo();
       }
